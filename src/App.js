@@ -7,7 +7,10 @@ export default function App() {
 
   return (
     <div className="App" style={ThemeStyling}>
-      <button onClick={setThemeHandler}> {Theme ? "light" : "dark"}</button>
+      <button className="btn" onClick={setThemeHandler}>
+        {" "}
+        {Theme ? "🌝 Light Theme" : "🌚 Dark Theme"}
+      </button>
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
     </div>
