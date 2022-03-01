@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { DarkThemeContext } from "./dark-theme-context";
+import { useTheme } from "./dark-theme-context";
 import "./styles.css";
 
 export default function App() {
-  const { Theme, setThemeHandler, ThemeStyling } = useContext(DarkThemeContext);
+  const { Theme, setThemeHandler, ThemeStyling } = useTheme();
 
   return (
     <div className="App" style={ThemeStyling}>

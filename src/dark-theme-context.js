@@ -1,25 +1,22 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 export const DarkThemeContext = createContext();
 
+export const DarkProvider = ({ children }) => {
+  const [Theme, setTheme] = useState(false);
 
+  const setThemeHandler = () => setTheme((prev) => !prev);
 
-export const DarkProvider = ({children}) =>{
-  const [Theme,setTheme] = useState(false);
+  const ThemeStyling = {
+    backgroundColor: Theme ? "black" : "white",
+    color: Theme ? "white" : "black"
+  };
 
-  const setThemeHandler = () =>
-    setTheme(prev => !prev)
-  
+  return (
+    <DarkThemeContext.Provider value={{ Theme, setThemeHandler, ThemeStyling }}>
+      {children}
+    </DarkThemeContext.Provider>
+  );
+};
 
-const ThemeStyling = {
-  backgroundColor : Theme ? "black" : "white",
-  color: Theme ? "white" : "black"
-}
-
-  return(
-  <DarkThemeContext.Provider value={{Theme,setThemeHandler,ThemeStyling}}>
-    {children}
-  </DarkThemeContext.Provider>
-  )
-  
-}
+export const useTheme = () => useContext(DarkThemeContext);
